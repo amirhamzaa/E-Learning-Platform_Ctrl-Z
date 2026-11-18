@@ -3,10 +3,10 @@
 import Image from "next/image";
 import { ArrowLeft, ArrowRight, Calendar, Timer } from "lucide-react";
 import { useMemo, useState } from "react";
-import { UPCOMING_BATCHES, type UpcomingBatch } from "@/data/homepage";
+import { UPCOMING_BATCHES } from "@/data/homepage";
 import { Container } from "@/components/ui/Container";
 
-function getBadgeToneClasses(tone: UpcomingBatch["badgeTone"]): string {
+function getBadgeToneClasses(tone) {
   switch (tone) {
     case "error":
       return "bg-error-container text-on-error-container";
@@ -14,6 +14,8 @@ function getBadgeToneClasses(tone: UpcomingBatch["badgeTone"]): string {
       return "bg-secondary-fixed text-on-secondary-fixed";
     case "tertiary":
       return "bg-tertiary-fixed text-on-tertiary-fixed";
+    default:
+      return "bg-secondary-fixed text-on-secondary-fixed";
   }
 }
 

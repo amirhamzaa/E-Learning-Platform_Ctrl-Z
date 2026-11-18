@@ -7,11 +7,10 @@ import {
   Shield,
   Terminal,
 } from "lucide-react";
-import type { ReactNode } from "react";
-import { INDUSTRY_SECTORS, type SectorIconName } from "@/data/homepage";
+import { INDUSTRY_SECTORS } from "@/data/homepage";
 import { Container } from "@/components/ui/Container";
 
-function renderSectorIcon(icon: SectorIconName): ReactNode {
+function renderSectorIcon(icon) {
   const iconClass = "w-[26px] h-[26px]";
   switch (icon) {
     case "terminal":
@@ -26,6 +25,8 @@ function renderSectorIcon(icon: SectorIconName): ReactNode {
       return <PenTool className={iconClass} aria-hidden="true" />;
     case "security":
       return <Shield className={iconClass} aria-hidden="true" />;
+    default:
+      return null;
   }
 }
 

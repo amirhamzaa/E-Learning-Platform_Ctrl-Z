@@ -1,123 +1,10 @@
-export interface NavLinkItem {
-  label: string;
-  href: string;
-  plannedRoute: string;
-}
-
-export interface HeroStat {
-  value: string;
-  label: string;
-  sublabel: string;
-  valueColorClass: string;
-}
-
-export type SectorIconName =
-  | "terminal"
-  | "design"
-  | "ai"
-  | "marketing"
-  | "graphic"
-  | "security";
-
-export interface IndustrySector {
-  id: string;
-  title: string;
-  courseCount: string;
-  icon: SectorIconName;
-  href: string;
-}
-
-export type CourseTrack = "All Tracks" | "Development" | "Design" | "AI & Data";
-
-export interface FeaturedCourse {
-  id: string;
-  slug: string;
-  title: string;
-  track: Exclude<CourseTrack, "All Tracks"> | "Marketing";
-  duration: string;
-  instructorName: string;
-  instructorAvatar: string;
-  instructorAvatarAlt: string;
-  thumbnail: string;
-  thumbnailAlt: string;
-  rating: string;
-  reviewsCount: string;
-  originalPrice: string;
-  price: string;
-  badges: Array<{
-    label: string;
-    variant: "primary" | "sage";
-  }>;
-}
-
-export interface UpcomingBatch {
-  id: string;
-  batchCode: string;
-  startsIn: string;
-  badgeTone: "error" | "secondary" | "tertiary";
-  title: string;
-  description: string;
-  schedule: string;
-  mode: string;
-  filledSeats: number;
-  totalSeats: number;
-  progressColorClass: string;
-  mentorName: string;
-  mentorCredential: string;
-  mentorAvatar: string;
-  mentorAvatarAlt: string;
-}
-
-export type PillarIconName = "support" | "groups" | "handshake" | "medal";
-
-export interface TransformationPillar {
-  id: string;
-  badge: string;
-  title: string;
-  description: string;
-  icon: PillarIconName;
-  iconWrapperClass: string;
-  badgeClass: string;
-}
-
-export interface InstructorProfile {
-  id: string;
-  name: string;
-  role: string;
-  bio: string;
-  studentsMentored: string;
-  avatar: string;
-  avatarAlt: string;
-}
-
-export interface SuccessStory {
-  id: string;
-  quote: string;
-  studentName: string;
-  studentRole: string;
-  avatar: string;
-  avatarAlt: string;
-  rating: number;
-}
-
-export interface BlogArticle {
-  id: string;
-  slug: string;
-  category: string;
-  readTime: string;
-  title: string;
-  excerpt: string;
-  thumbnail: string;
-  thumbnailAlt: string;
-}
-
 export const SITE_ASSETS = {
   logo: "/images/bengali-learning-logo.png",
   headerAvatar: "/images/header-avatar.jpg",
   heroStudio: "/images/hero-studio.jpg",
-} as const;
+};
 
-export const NAV_LINKS: NavLinkItem[] = [
+export const NAV_LINKS = [
   { label: "Courses", href: "#featured-courses", plannedRoute: "/courses" },
   {
     label: "Upcoming Courses",
@@ -133,14 +20,14 @@ export const NAV_LINKS: NavLinkItem[] = [
   { label: "Contact", href: "#footer-contact", plannedRoute: "/contact" },
 ];
 
-export const HERO_POPULAR_TAGS: string[] = [
+export const HERO_POPULAR_TAGS = [
   "Full-Stack Web Dev",
   "UI/UX Design",
   "Python & AI",
   "Digital Marketing",
 ];
 
-export const IMPACT_STATS: HeroStat[] = [
+export const IMPACT_STATS = [
   {
     value: "65,000+",
     label: "Graduated Students",
@@ -167,7 +54,7 @@ export const IMPACT_STATS: HeroStat[] = [
   },
 ];
 
-export const INDUSTRY_SECTORS: IndustrySector[] = [
+export const INDUSTRY_SECTORS = [
   {
     id: "web-development",
     title: "Web Development",
@@ -212,14 +99,14 @@ export const INDUSTRY_SECTORS: IndustrySector[] = [
   },
 ];
 
-export const COURSE_TRACK_FILTERS: CourseTrack[] = [
+export const COURSE_TRACK_FILTERS = [
   "All Tracks",
   "Development",
   "Design",
   "AI & Data",
 ];
 
-export const FEATURED_COURSES: FeaturedCourse[] = [
+export const FEATURED_COURSES = [
   {
     id: "course-1",
     slug: "full-stack-web-development-mern-nextjs",
@@ -304,7 +191,7 @@ export const FEATURED_COURSES: FeaturedCourse[] = [
   },
 ];
 
-export const UPCOMING_BATCHES: UpcomingBatch[] = [
+export const UPCOMING_BATCHES = [
   {
     id: "batch-ss-2408",
     batchCode: "Batch #SS-2408",
@@ -361,7 +248,7 @@ export const UPCOMING_BATCHES: UpcomingBatch[] = [
   },
 ];
 
-export const TRANSFORMATION_PILLARS: TransformationPillar[] = [
+export const TRANSFORMATION_PILLARS = [
   {
     id: "lifetime-mentorship",
     badge: "Never Learn Alone",
@@ -404,7 +291,7 @@ export const TRANSFORMATION_PILLARS: TransformationPillar[] = [
   },
 ];
 
-export const TOP_INSTRUCTORS: InstructorProfile[] = [
+export const TOP_INSTRUCTORS = [
   {
     id: "shakil-ahmed",
     name: "Shakil Ahmed",
@@ -443,7 +330,7 @@ export const TOP_INSTRUCTORS: InstructorProfile[] = [
   },
 ];
 
-export const SUCCESS_STORIES: SuccessStory[] = [
+export const SUCCESS_STORIES = [
   {
     id: "zubair-al-mahmud",
     quote:
@@ -476,7 +363,7 @@ export const SUCCESS_STORIES: SuccessStory[] = [
   },
 ];
 
-export const LATEST_ARTICLES: BlogArticle[] = [
+export const LATEST_ARTICLES = [
   {
     id: "tech-portfolio-remote-us-roles",
     slug: "high-converting-tech-portfolio-remote-us-roles",
@@ -518,7 +405,7 @@ export const LATEST_ARTICLES: BlogArticle[] = [
   },
 ];
 
-export const FOOTER_PLATFORM_LINKS: NavLinkItem[] = [
+export const FOOTER_PLATFORM_LINKS = [
   { label: "All Courses", href: "#featured-courses", plannedRoute: "/courses" },
   {
     label: "Upcoming Batches",
@@ -537,7 +424,7 @@ export const FOOTER_PLATFORM_LINKS: NavLinkItem[] = [
   },
 ];
 
-export const FOOTER_INSTITUTION_LINKS: NavLinkItem[] = [
+export const FOOTER_INSTITUTION_LINKS = [
   {
     label: "About Us",
     href: "#career-transformation",
@@ -556,7 +443,7 @@ export const FOOTER_INSTITUTION_LINKS: NavLinkItem[] = [
   },
 ];
 
-export const FOOTER_LEGAL_LINKS: NavLinkItem[] = [
+export const FOOTER_LEGAL_LINKS = [
   {
     label: "Privacy Policy",
     href: "#footer-legal",

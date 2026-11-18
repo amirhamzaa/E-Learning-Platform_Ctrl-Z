@@ -1,5 +1,3 @@
-import type { Config } from "tailwindcss";
-
 const fontStack = [
   "var(--font-plus-jakarta-sans)",
   '"Plus Jakarta Sans"',
@@ -7,11 +5,11 @@ const fontStack = [
   "sans-serif",
 ];
 
-const config: Config = {
+const config = {
   content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./data/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,jsx,mdx}",
+    "./components/**/*.{js,jsx,mdx}",
+    "./data/**/*.{js,jsx,mdx}",
   ],
   theme: {
     extend: {

@@ -3,15 +3,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, Search, X } from "lucide-react";
-import { useEffect, useState, type FormEvent } from "react";
-import { NAV_LINKS, SITE_ASSETS } from "@/data/homepage";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { AUTH_NAV_LINKS } from "@/data/auth";
+import { SITE_ASSETS } from "@/data/homepage";
 
-export function Header() {
+export function AuthHeader() {
+  const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
+    const handleKeyDown = (event) => {
       if (event.key === "Escape") {
         setMobileMenuOpen(false);
       }
@@ -20,13 +23,10 @@ export function Header() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  const handleSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSearchSubmit = (event) => {
     event.preventDefault();
     setMobileMenuOpen(false);
-    const coursesSection = document.getElementById("featured-courses");
-    if (coursesSection) {
-      coursesSection.scrollIntoView({ behavior: "smooth" });
-    }
+    router.push("/#featured-courses");
   };
 
   return (
@@ -36,7 +36,7 @@ export function Header() {
           <Link
             href="/"
             aria-label="Shikhbe Shobai Home"
-            className="flex items-center gap-space-sm"
+            className="flex items-center"
             data-path="home"
           >
             <Image
@@ -54,15 +54,15 @@ export function Header() {
           aria-label="Primary Navigation"
           className="hidden xl:flex items-center gap-space-xs"
         >
-          {NAV_LINKS.map((item) => (
-            <a
+          {AUTH_NAV_LINKS.map((item) => (
+            <Link
               key={item.label}
               href={item.href}
               data-path={item.plannedRoute}
               className="px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -87,33 +87,34 @@ export function Header() {
           </form>
 
           <div className="flex items-center gap-space-sm">
-            <a
-              href="#newsletter"
-              data-path="/login"
+            <Link
+              href="/login"
+              aria-current="page"
+              data-path="student-login"
               className="hidden sm:inline-flex px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors"
             >
-              Login
-            </a>
+              Student Login
+            </Link>
             <a
-              href="#newsletter"
-              data-path="/register"
+              href="#student-registration"
+              data-path="student-registration"
               className="px-3.5 sm:px-space-md py-space-sm rounded-lg bg-primary-container text-on-primary font-label-md text-label-md hover:bg-primary transition-colors shadow-sm"
             >
-              Register
+              Student Register
             </a>
-            <Image
-              src={SITE_ASSETS.headerAvatar}
-              alt="Profile"
-              width={32}
-              height={32}
-              className="hidden sm:block w-8 h-8 rounded-full object-cover ring-2 ring-surface-container-high ml-space-xs"
-            />
+            <a
+              href="#instructor-registration"
+              data-path="instructor-registration"
+              className="hidden md:inline-flex px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors"
+            >
+              Join as Mentor
+            </a>
             <button
               type="button"
               onClick={() => setMobileMenuOpen((prev) => !prev)}
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileMenuOpen}
-              aria-controls="mobile-navigation-drawer"
+              aria-controls="auth-mobile-navigation-drawer"
               className="xl:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg bg-surface-container-low text-on-surface hover:bg-surface-container-high transition-colors"
             >
               {mobileMenuOpen ? (
@@ -129,7 +130,7 @@ export function Header() {
       {/* Mobile & Tablet Navigation Drawer */}
       {mobileMenuOpen && (
         <div
-          id="mobile-navigation-drawer"
+          id="auth-mobile-navigation-drawer"
           className="xl:hidden border-t border-brand-border bg-surface/95 backdrop-blur-xl shadow-lg"
         >
           <div className="max-w-7xl mx-auto px-gutter-mobile sm:px-gutter py-space-md flex flex-col gap-space-md">
@@ -152,12 +153,9 @@ export function Header() {
               />
             </form>
 
-            <nav
-              aria-label="Mobile Navigation"
-              className="flex flex-col gap-1"
-            >
-              {NAV_LINKS.map((item) => (
-                <a
+            <nav aria-label="Mobile Navigation" className="flex flex-col gap-1">
+              {AUTH_NAV_LINKS.map((item) => (
+                <Link
                   key={item.label}
                   href={item.href}
                   data-path={item.plannedRoute}
@@ -165,26 +163,24 @@ export function Header() {
                   className="px-space-md py-2.5 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors"
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
             </nav>
 
-            <div className="flex sm:hidden items-center gap-space-sm pt-space-sm border-t border-brand-border">
-              <a
-                href="#newsletter"
-                data-path="/login"
+            <div className="flex flex-col sm:hidden gap-space-xs pt-space-sm border-t border-brand-border">
+              <Link
+                href="/login"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex-1 text-center px-space-md py-2.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors"
+                className="w-full text-center px-space-md py-2.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors"
               >
-                Login
-              </a>
+                Student Login
+              </Link>
               <a
-                href="#newsletter"
-                data-path="/register"
+                href="#instructor-registration"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex-1 text-center px-space-md py-2.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md hover:bg-primary transition-colors shadow-sm"
+                className="w-full text-center px-space-md py-2.5 rounded-lg bg-surface-container-low text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-colors"
               >
-                Register
+                Join as Mentor
               </a>
             </div>
           </div>

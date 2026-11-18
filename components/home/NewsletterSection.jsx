@@ -1,17 +1,17 @@
 "use client";
 
 import { AlertCircle, CheckCircle2 } from "lucide-react";
-import { useState, type FormEvent } from "react";
+import { useState } from "react";
 import { Container } from "@/components/ui/Container";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function NewsletterSection() {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "error" | "success">("idle");
+  const [status, setStatus] = useState("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const trimmed = email.trim();
 

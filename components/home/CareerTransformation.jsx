@@ -1,12 +1,8 @@
 import { Handshake, Headset, Medal, Users } from "lucide-react";
-import type { ReactNode } from "react";
-import {
-  TRANSFORMATION_PILLARS,
-  type PillarIconName,
-} from "@/data/homepage";
+import { TRANSFORMATION_PILLARS } from "@/data/homepage";
 import { Container } from "@/components/ui/Container";
 
-function renderPillarIcon(icon: PillarIconName): ReactNode {
+function renderPillarIcon(icon) {
   const iconClass = "w-[30px] h-[30px]";
   switch (icon) {
     case "support":
@@ -17,6 +13,8 @@ function renderPillarIcon(icon: PillarIconName): ReactNode {
       return <Handshake className={iconClass} aria-hidden="true" />;
     case "medal":
       return <Medal className={iconClass} aria-hidden="true" />;
+    default:
+      return null;
   }
 }
 

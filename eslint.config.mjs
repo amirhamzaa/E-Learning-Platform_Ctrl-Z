@@ -15,10 +15,9 @@ const eslintConfig = [
       ".next/**",
       "node_modules/**",
       "shikhbe_shobai_ctrlZ_UI/**",
-      "next-env.d.ts",
     ],
   },
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  ...compat.extends("next/core-web-vitals"),
 ];
 
 export default eslintConfig;

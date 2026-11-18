@@ -3,15 +3,11 @@
 import Image from "next/image";
 import { Clock, Star } from "lucide-react";
 import { useState } from "react";
-import {
-  COURSE_TRACK_FILTERS,
-  FEATURED_COURSES,
-  type CourseTrack,
-} from "@/data/homepage";
+import { COURSE_TRACK_FILTERS, FEATURED_COURSES } from "@/data/homepage";
 import { Container } from "@/components/ui/Container";
 
 export function FeaturedCourses() {
-  const [activeTrack, setActiveTrack] = useState<CourseTrack>("All Tracks");
+  const [activeTrack, setActiveTrack] = useState("All Tracks");
 
   const filteredCourses =
     activeTrack === "All Tracks"

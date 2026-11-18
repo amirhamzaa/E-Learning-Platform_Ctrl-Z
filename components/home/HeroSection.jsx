@@ -11,18 +11,18 @@ import {
   Star,
   X,
 } from "lucide-react";
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState } from "react";
 import { HERO_POPULAR_TAGS, SITE_ASSETS } from "@/data/homepage";
 import { Container } from "@/components/ui/Container";
 
 export function HeroSection() {
   const [searchQuery, setSearchQuery] = useState("");
   const [demoModalOpen, setDemoModalOpen] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef(null);
 
   useEffect(() => {
     if (!demoModalOpen) return;
-    const handleKeyDown = (event: KeyboardEvent) => {
+    const handleKeyDown = (event) => {
       if (event.key === "Escape") {
         setDemoModalOpen(false);
       }
@@ -31,12 +31,12 @@ export function HeroSection() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [demoModalOpen]);
 
-  const handleTagClick = (tag: string) => {
+  const handleTagClick = (tag) => {
     setSearchQuery(tag);
     inputRef.current?.focus();
   };
 
-  const handleSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSearchSubmit = (event) => {
     event.preventDefault();
     const target = document.getElementById("featured-courses");
     if (target) {
