@@ -4,7 +4,6 @@ import Image from "next/image";
 import {
   ArrowRight,
   Award,
-  BadgeCheck,
   PlayCircle,
   Search,
   ShieldCheck,
@@ -60,16 +59,6 @@ export function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
           {/* Left: Catchy Bilingual Messaging & Search */}
           <div className="lg:col-span-7 flex flex-col gap-space-md">
-            <div className="inline-flex items-center gap-space-sm px-space-md py-1.5 rounded-full bg-tertiary-container/10 w-fit">
-              <BadgeCheck
-                aria-hidden="true"
-                className="w-[18px] h-[18px] text-tertiary shrink-0"
-              />
-              <span className="font-label-sm text-label-sm text-tertiary font-bold tracking-wide uppercase">
-                Govt. Certified &amp; Industry Endorsed EdTech
-              </span>
-            </div>
-
             <div className="flex flex-col gap-space-xs">
               <span className="font-headline-lg text-headline-lg lg:font-display-hero lg:text-display-hero text-primary tracking-tight">
                 Shikhbe Shobai{" "}
